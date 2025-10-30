@@ -1,0 +1,367 @@
+body{
+    font-family: Arial, sans-serif; 
+    background-color: rgba(0, 0, 0, 0.884);
+    color: #ffffff;
+    margin: 0;  
+    padding: 20px;
+}
+
+h1{
+    text-align: center;
+    font-size: 40px;
+    position: relative;
+    margin: -8px;
+    color: #ffcc00;
+}
+
+h2{
+    text-align: center;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    position: relative;
+    color: #ffcc00;
+}
+
+/* centraliza os links horizontalmente */
+a{
+  min-width: 120px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 6px 17px;
+  border: 0;
+  border-radius: 7px;
+  margin: 20px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  background: radial-gradient(
+    ellipse at bottom,
+    rgb(100, 96, 44) 0%,
+    rgba(11, 21, 30, 1) 45%
+  );
+  color: rgba(238, 255, 0, 0.66);
+  margin-left: 25px;
+  margin-right: 25px;
+  transition: color 0.25s ease, transform 0.25s cubic-bezier(0.15, 0.83, 0.66, 1); 
+}
+a::before {
+  content: "";
+  width: 70%;
+  height: 1px;
+
+
+  position: absolute;
+  padding-top: 1px;
+  bottom: 6px;
+  left: 15%;
+  margin: -6px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgb(255, 238, 0) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0.2;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: translateY(2px);
+}
+
+a:hover {
+  color: rgb(255, 230, 0);
+  transform: scale(1.07) translateY(-3px);
+}
+
+a:hover::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* garante que elementos inline sejam centralizados dentro do body */
+body, main, header, nav, footer {
+    text-align: center;
+}
+
+/* miniaturas */
+.fotos img {
+    width:200px;
+    height:250px;
+    margin: 15px;
+    object-fit:cover;
+    border: 4px solid #ffcc00;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    object-fit: cover;
+}
+
+.fotos img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 18px rgba(255, 204, 0, 0.85);
+}
+
+/* Lightbox (overlay) */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.75);
+    z-index: 9999;
+    padding: 20px;
+}
+.lightbox.open {
+    display: flex;
+}
+
+/* Conteúdo central */
+.lightbox-content {
+    position: relative;
+    max-width: 95%;
+    max-height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+/* imagem ampliada */
+.lightbox-content img {
+    max-width: 90vw;
+    max-height: 80vh;
+    border-radius: 6px;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.6);
+}
+
+/* botões / ações */
+.lightbox-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.download-btn {
+    background: linear-gradient(180deg,#ffcc00,#e6b800);
+    color: #111;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+}
+.download-btn:hover { transform: translateY(-2px); }
+
+/* botão fechar */
+.lb-close {
+    position: absolute;
+    right: -6px;
+    top: -10px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.lb-close:hover { background: rgba(0,0,0,0.85); }
+
+/* responsivo */
+@media (max-width: 480px){
+    .fotos img { width: 140px; height: 180px; }
+    .download-btn { padding: 7px 10px; font-size: 14px; }
+}
+
+ /*Catrastro*/
+ * {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+Font-family: "Open Sans", sans-serif;
+ }
+
+.cadastro {
+
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+width: 100%;
+padding: 0 10px;
+position: relative;
+}
+
+.cadastro::before {
+
+content:"";
+position: absolute;
+width: 100%;
+height: 100%;
+background: url(img/background.jpg) no-repeat center center / cover;
+z-index: -1;
+}
+
+.wrapper {
+
+width: 400px;
+border-radius: 8px;
+padding: 30px;
+text-align: center;
+border: 1px solid rgba(255, 255, 255, 0.5);
+backdrop-filter: blur(9px);
+-webkit-backdrop-filter: blur(9px);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+h3 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.input-field {
+    position: relative;
+    border-bottom: 2px solid #ccc;
+    margin: 15px 0;
+}
+
+.input-field label {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.15s ease;
+}
+
+.input-field input {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    color: #fff;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.input-field input:focus~label,
+.input-field input:valid~label {
+    top: 10px;
+    font-size: 0.8rem;
+    transform: translateY(-120%);
+}
+
+.forget {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 25px 0 35px 0;
+}
+
+#remember {
+    accent-color: #fff;
+}
+
+.forget label{
+    display: flex;
+    align-items: center;
+}
+
+.forget label p {
+    margin-left: 8px;
+}
+
+.wrapper a1 {
+    color: #efefef
+    text-decoration: none;
+}
+
+.wrapper a1:hover {
+    text-decoration: underline;
+}
+
+button {
+    background: #fff;
+    color: #000;
+    font-weight: 600;
+    border: none;
+    padding: 12px 20;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+    border: 2px solid transparent;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    color: #030303;
+    border-color: #ffffffee
+    background: #fff;
+}
+
+.register {
+    text-align: center;
+    margin-top: 30px;
+    color: #fff;
+}
+
+/*SLIDES*/
+
+/* ...existing code... */
+
+.Slides {
+    position: fixed;
+    inset: 0;                 /* top:0; right:0; bottom:0; left:0; */
+    z-index: -999;            /* fica atrás do conteúdo */
+    overflow: hidden;
+    background-color: #000;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    will-change: background-image;
+    filter: brightness(0.55) saturate(1.05); /* ajuste escurecimento */
+}
+
+/* camadas que recebem background-image (full screen) */
+.Slides .slide-layer {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 800ms ease-in-out;
+    will-change: opacity, transform;
+}
+
+/* camada visível */
+.Slides .slide-layer.show {
+    opacity: 1;
+}
+
+/* garante que o conteúdo da página fique acima do fundo */
+.site-content {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+/* opcional: se quiser que o fundo não cubra totalmente telas pequenas, ajuste altura */
+@media (max-width: 600px) {
+    .Slides { filter: brightness(0.6); }
+}
+
+/* ...existing code... */

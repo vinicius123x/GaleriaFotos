@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Fotos</title>
+    <link rel="stylesheet" href="peson.css">
+    <link rel="icon" href="ico.png" type="image/png">
+    <link rel="apple-touch-icon" href="ico.png">
+</head>
+<body>
+    <h2>Galeria de Fotos</h2>
+    <h1>Vinicius123X</h1>
+    <a href="pag1.html">Fotos da Nutureza</a>
+    <br><br>
+    <div class="fotos">
+        <img src="astronomicas/foto(1).jpg" alt="Foto 1">
+        <img src="astronomicas/foto(1).bmp" alt="Foto 0">
+        <img src="astronomicas/foto(2).jpg" alt="Foto 2">
+        <img src="astronomicas/foto(3).jpg" alt="Foto 3">
+        <img src="astronomicas/foto(4).jpg" alt="Foto 4">
+        <img src="astronomicas/foto(5).jpg" alt="Foto 5">
+        <img src="astronomicas/foto(6).png" alt="Foto 6">
+        <img src="astronomicas/foto(7).png" alt="Foto 7">
+        <img src="astronomicas/foto(8).png" alt="Foto 8">
+        <img src="astronomicas/foto(9).png" alt="Foto 9">
+        <img src="astronomicas/foto(10).jpg" alt="Foto 10">
+        <img src="astronomicas/foto(11).png" alt="Foto 11">
+        <img src="astronomicas/foto(12).png" alt="Foto 12">
+        <img src="astronomicas/foto(13).jpg" alt="Foto 13">
+        <img src="astronomicas/foto(14).jpg" alt="Foto 14">
+        <img src="astronomicas/foto(15).jpg" alt="Foto 15">
+        <img src="astronomicas/foto(16).jpg" alt="Foto 16">
+        <img src="astronomicas/foto(17).jpg" alt="Foto 17">
+        <img src="astronomicas/foto(18).jpg" alt="Foto 18">
+        <img src="astronomicas/foto(19).jpg" alt="Foto 19">
+        <img src="astronomicas/foto(20).png" alt="Foto 20">
+        <img src="astronomicas/foto(21).png" alt="Foto 21">
+        <img src="astronomicas/foto(22).png" alt="Foto 22">
+        <img src="astronomicas/foto(23).png" alt="Foto 23">
+        <img src="astronomicas/foto(24).png" alt="Foto 24">
+        <img src="astronomicas/foto(25).png" alt="Foto 25">
+        <img src="astronomicas/foto(26).png" alt="Foto 26">
+        <img src="astronomicas/foto(27).png" alt="Foto 27">
+        <img src="astronomicas/foto(28).png" alt="Foto 28">
+        <img src="astronomicas/foto(29).png" alt="Foto 29">
+        <img src="astronomicas/foto(30).png" alt="Foto 30">
+        <img src="astronomicas/foto(31).jpg" alt="Foto 31">
+        <img src="astronomicas/foto(32).jpg" alt="Foto 32">
+        <img src="astronomicas/foto(33).jpg" alt="Foto 33">
+        <img src="astronomicas/foto(34).jpg" alt="Foto 34">
+        <img src="astronomicas/foto(35).jpg" alt="Foto 35">
+        <img src="astronomicas/foto(36).jpg" alt="Foto 36">
+        <img src="astronomicas/foto(37).jpg" alt="Foto 37">
+        <img src="astronomicas/foto(38).jpg" alt="Foto 38">
+        <img src="astronomicas/foto(39).jpg" alt="Foto 39">
+        <img src="astronomicas/foto(40).jpg" alt="Foto 40">
+        <img src="astronomicas/foto(41).jpg" alt="Foto 41">
+        <img src="astronomicas/foto(42).jpg" alt="Foto 42">
+        <img src="astronomicas/foto(43).jpg" alt="Foto 43">
+        <img src="astronomicas/foto(44).jpg" alt="Foto 44">
+        <img src="astronomicas/foto(45).jpg" alt="Foto 45">
+        <img src="astronomicas/foto(46).jpg" alt="Foto 46">
+        <img src="astronomicas/foto(47).jpg" alt="Foto 47">
+        <img src="astronomicas/foto(48).jpg" alt="Foto 48">
+        <img src="astronomicas/foto(49).jpg" alt="Foto 49">
+        <img src="astronomicas/foto(50).jpg" alt="Foto 50">
+        <img src="astronomicas/foto(51).png" alt="Foto 51">
+        <img src="astronomicas/foto(52).png" alt="Foto 52">
+    </div>
+
+    <!-- Lightbox / modal para ampliar e baixar -->
+    <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Visualizador de imagem">
+        <div class="lightbox-content" role="document">
+            <button id="lb-close" class="lb-close" aria-label="Fechar">✕</button>
+            <img id="lb-img" src="" alt="">
+            <div class="lightbox-actions">
+                <a id="lb-download" class="download-btn" href="#" download>Baixar foto</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    (function(){
+        const imgs = document.querySelectorAll('.fotos img');
+        const lightbox = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lb-img');
+        const lbDownload = document.getElementById('lb-download');
+        const lbClose = document.getElementById('lb-close');
+
+        function openLightbox(src, alt){
+            lbImg.src = src;
+            lbImg.alt = alt || '';
+            // definir href de download com nome limpo
+            const filename = (src.split('/').pop() || 'foto').replace(/[#?].*$/,'');
+            lbDownload.href = src;
+            lbDownload.setAttribute('download', filename);
+            lightbox.setAttribute('aria-hidden','false');
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            lbClose.focus();
+        }
+
+        function closeLightbox(){
+            lightbox.classList.remove('open');
+            lightbox.setAttribute('aria-hidden','true');
+            lbImg.src = '';
+            document.body.style.overflow = '';
+        }
+
+        imgs.forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', () => openLightbox(img.src, img.alt));
+            img.addEventListener('keydown', (e) => {
+                if(e.key === 'Enter' || e.key === ' ') openLightbox(img.src, img.alt);
+            });
+            img.setAttribute('tabindex','0');
+        });
+
+        // fechar clicando fora do conteúdo
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+        lbClose.addEventListener('click', closeLightbox);
+
+        // tecla ESC para fechar
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+        });
+    })();
+    </script>
+
+</body>
+</html>

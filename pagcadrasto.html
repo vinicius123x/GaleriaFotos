@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Fotos</title>
+    <link rel="stylesheet" href="peson.css">
+    <link rel="icon" href="ico.png" type="image/png">
+    <link rel="apple-touch-icon" href="ico.png">
+</head>
+<body class="cadastro">
+<div class="wrapper">
+    <form action="#">
+
+        <h3>Cadastro</h3>
+
+        <div class="input-field">
+            <input type="text">
+            <label>Digite seu e-mail</label>
+        </div>
+
+        <div class="input-field">
+            <input type="password">
+            <label>Digite sua senha</label>
+        </div>
+
+        <div class="forget">
+            <label for="remember">
+                <input type="checkbox" id="remember">
+                <p>Lembrar-me</p>
+            </label>
+            <a1 href="#">Esqueceu sua senha?</a1>
+       </div>
+       
+       <button type="button" onclick="location.href='pag1.html'">Entrar</button>
+
+      
+    </form>
+</div>
+
+
+<div class="Slides">
+   <img src="slide/foto(1).jpg" alt="foto(1)">
+   <img src="slide/foto(2).jpg" alt="foto(2)">
+   <img src="slide/foto(3).jpg" alt="foto(3)">
+   <img src="slide/foto(4).jpg" alt="foto(4)">
+   <img src="slide/foto(5).jpg" alt="foto(5)">
+   <img src="slide/foto(6).jpg" alt="foto(6)">
+   <img src="slide/foto(7).jpg" alt="foto(7)">
+   <img src="slide/foto(8).jpg" alt="foto(8)">
+   <img src="slide/foto(9).jpg" alt="foto(9)">
+   <img src="slide/foto(10).jpg" alt="foto(10)">
+   <img src="slide/foto(11).jpg" alt="foto(11)">
+   <img src="slide/foto(12).jpg" alt="foto(12)">
+   <img src="slide/foto(13).jpg" alt="foto(13)">
+</div>
+  
+<script>
+(function(){
+    const images = [
+        "slide/foto(1).jpg",
+        "slide/foto(2).jpg",
+        "slide/foto(3).jpg",
+        "slide/foto(4).jpg",
+        "slide/foto(5).jpg",
+        "slide/foto(6).jpg",
+        "slide/foto(7).jpg",
+        "slide/foto(8).jpg",
+        "slide/foto(9).jpg",
+        "slide/foto(10).jpg",
+        "slide/foto(11).jpg",
+       "slide/foto(12).jpg",
+        "slide/foto(13).jpg",
+    ];  
+    const delay = 4000; // tempo em ms entre trocas
+
+    function initSlide(el, imgs, interval){
+        if (!el || !imgs.length) return;
+        // criar duas camadas
+        const a = document.createElement('div');
+        const b = document.createElement('div');
+        a.className = 'slide-layer';
+        b.className = 'slide-layer';
+        el.appendChild(a);
+        el.appendChild(b);
+
+        let idx = 0;
+        // preload
+        imgs.forEach(src => { const i = new Image(); i.src = src; });
+
+        // define primeira imagem
+        a.style.backgroundImage = `url('${imgs[0]}')`;
+        a.classList.add('show');
+
+        // alternador
+        setTimeout(function next(){
+            idx = (idx + 1) % imgs.length;
+            const top = a.classList.contains('show') ? a : b;
+            const bottom = top === a ? b : a;
+            bottom.style.backgroundImage = `url('${imgs[idx]}')`;
+            // garantir reflow para transição consistente
+            void bottom.offsetWidth;
+            bottom.classList.add('show');
+            top.classList.remove('show');
+            setTimeout(next, interval);
+        }, interval);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const el = document.querySelector('.Slides');
+        initSlide(el, images, delay);
+    });
+})();
+</script>
+
+</body>
+</html>
